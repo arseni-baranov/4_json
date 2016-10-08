@@ -3,14 +3,12 @@ import json, os.path
 def load_data(filepath):
     current_dir = os.path.dirname(os.path.abspath(__file__))
     data_file = current_dir + '\\' + filepath
-    file = open(data_file, "r", encoding="utf-8")
 
-    return json.loads(file.read())
-
+    with open(data_file, "r", encoding="utf-8") as data_file:
+        return json.loads(data_file.read())
 
 def pretty_print_json(data):
-    print(json.dumps(data, indent=4, sort_keys=True))
-
+    print(json.dumps(data, indent=4, sort_keys=True, ensure_ascii=False))
 
 if __name__ == '__main__':
 
