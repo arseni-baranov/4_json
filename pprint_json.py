@@ -1,11 +1,16 @@
-import json, os.path
+import json
+import os.path
 
-def load_data(filepath):
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    data_file = current_dir + '\\' + filepath
+
+def load_data(file_name):
+    current_dir = os.path.abspath(__file__)
+    script_name = os.path.basename(__file__)
+
+    data_file = current_dir.replace(script_name, '') + file_name
 
     with open(data_file, "r", encoding="utf-8") as data_file:
         return json.loads(data_file.read())
+
 
 def pretty_print_json(data):
     print(json.dumps(data, indent=4, sort_keys=True, ensure_ascii=False))
