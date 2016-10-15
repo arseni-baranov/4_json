@@ -1,15 +1,9 @@
 import json
-import os.path
-
 
 def load_data(file_name):
-    current_dir = os.path.abspath(__file__)
-    script_name = os.path.basename(__file__)
 
-    data_file = current_dir.replace(script_name, '') + file_name
-
-    with open(data_file, "r", encoding="utf-8") as data_file:
-        return json.loads(data_file.read())
+    with open(file_name, "r", encoding="utf-8") as file_name:
+        return json.loads(file_name.read())
 
 
 def pretty_print_json(data):
@@ -19,9 +13,9 @@ if __name__ == '__main__':
 
         filename = ''
 
-        while not os.path.isfile(filename):
+        while not filename:
             try:
-                filename = input('Введите название json файла: ')
+                filename = input('Введите полное название до json файла: ')
                 pretty_print_json(load_data(filename))
             except FileNotFoundError:
                 print('Данного файла не существует в директории с программой')
