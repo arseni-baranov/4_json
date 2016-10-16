@@ -18,4 +18,4 @@ if __name__ == '__main__':
                 filename = input('Введите полное название до json файла: ')
                 pretty_print_json(load_data(filename))
             except FileNotFoundError:
-                print('Данного файла не существует в директории с программой')
+                print('Данный файл не найден по указанному пути, попробуйте ещё раз')
