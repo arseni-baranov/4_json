@@ -11,11 +11,12 @@ def pretty_print_json(data):
 
 if __name__ == '__main__':
 
-        filename = ''
-
-        while not filename:
-            try:
-                filename = input('Введите полное название до json файла: ')
-                pretty_print_json(load_data(filename))
-            except FileNotFoundError:
-                print('Данный файл не найден по указанному пути, попробуйте ещё раз')
+    def check_file_exists():
+        try:
+            filename = input('Введите полное название до json файла: ')
+            pretty_print_json(load_data(filename))
+        except FileNotFoundError:
+            print('Данный файл не найден по указанному пути, попробуйте ещё раз')
+            check_file_exists()
+    
+check_file_exists()
